@@ -33,7 +33,7 @@ class MoviesList(Resource):
 
 class Movies(Resource):
 
-    def get(mself, movie_id):
+    def get(self, movie_id):
         movie = MovieSchema().dump(Movie.query.get(movie_id))
         if not movie:
             api.abort(404, success=False,  message=f"User {movie_id} does not exist")

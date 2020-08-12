@@ -27,9 +27,9 @@ from src.castingagency import db, ma
 #     db.create_all()
 
 
-movie_actor = Table('movie_actor', db.Model.metadata,
-                    Column('movie_id', Integer, ForeignKey('movies.id')),
-                    Column('actor_id', Integer, ForeignKey('actors.id')))
+# movie_actor = Table('movie_actor', db.Model.metadata,
+#                     Column('movie_id', Integer, ForeignKey('movies.id')),
+#                     Column('actor_id', Integer, ForeignKey('actors.id')))
 
 
 # class Cast(db.Model):

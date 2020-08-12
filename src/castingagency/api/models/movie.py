@@ -16,7 +16,7 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(80), nullable=False)
     release_date = Column(Date, nullable=False)
-    actors = relationship("Actor", secondary=casts, backref=db.backref("movies", lazy="dynamic"))
+    #actors = relationship("Actor", secondary=casts)
 
     def __init__(self, title, release_date):
         self.title = title

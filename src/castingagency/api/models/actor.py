@@ -16,7 +16,7 @@ class Actor(db.Model):
     name = Column(String(80), nullable=False)
     age = Column(Integer, nullable=False)
     gender = Column(String(6), nullable=False)
-    movies = relationship("Movie", secondary=casts, backref=db.backref("actor", lazy="dynamic"))
+    #movies = relationship("Movie", secondary=casts)
 
     def __init__(self, name, age, gender):
         self.name = name
