@@ -1,7 +1,5 @@
 from sqlalchemy import Column, String, Integer
-from sqlalchemy.orm import relationship, backref
 from src.castingagency import db, ma
-from src.castingagency.api.models.cast import casts
 
 
 class Actor(db.Model):
@@ -15,8 +13,8 @@ class Actor(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(80), nullable=False)
     age = Column(Integer, nullable=False)
-    gender = Column(String(6), nullable=False)
-    #movies = relationship("Movie", secondary=casts)
+    gender = Column(String(1), nullable=False)
+    # movies = relationship("Movie", secondary=casts)
 
     def __init__(self, name, age, gender):
         self.name = name

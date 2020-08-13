@@ -1,8 +1,5 @@
-import os
-from sqlalchemy import Column, String, Integer, Table, ForeignKey, Date
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, String, Integer, Date
 from src.castingagency import db, ma
-from src.castingagency.api.models.cast import casts
 
 
 class Movie(db.Model):
@@ -16,7 +13,7 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(80), nullable=False)
     release_date = Column(Date, nullable=False)
-    #actors = relationship("Actor", secondary=casts)
+    # actors = relationship("Actor", secondary=casts)
 
     def __init__(self, title, release_date):
         self.title = title
