@@ -18,10 +18,12 @@ def test_add_actor(test_app, test_database):
 
 def test_add_user_invalid_json(test_app, test_database):
     client = test_app.test_client()
-    resp = client.post("/actors", data=json.dumps({}), content_type="application/json",)
+    resp = client.post("/actors", data=json.dumps({}),
+                       content_type="application/json",)
     data = json.loads(resp.data.decode())
     assert resp.status_code == 422
     assert "unprocessable" == data["message"]
+
 
 def test_get_single_actors(test_app, test_database, add_actor):
     actor = add_actor('jaimen', 33, 'M')
@@ -63,7 +65,7 @@ def test_remove_actor(test_app, test_database, add_actor):
     resp_two = client.delete(f"/actors/{actor.id}")
     data = json.loads(resp_two.data.decode())
     assert resp_two.status_code == 200
-    assert '1 was deleted!'in data["message"]
+    assert '1 was deleted!' in data["message"]
     resp_three = client.get("/actors")
     data = json.loads(resp_three.data.decode())
     assert resp_three.status_code == 200

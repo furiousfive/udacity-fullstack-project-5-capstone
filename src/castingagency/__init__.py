@@ -9,6 +9,7 @@ db = SQLAlchemy()
 ma = Marshmallow()
 migrate = Migrate()
 
+
 def create_app(script_info=None):
 
     # instantiate the app
@@ -23,19 +24,10 @@ def create_app(script_info=None):
     ma.init_app(app)
     migrate.init_app(app, db)
 
+    from src.castingagency.api import api
 
+    api.init_app(app)
 
-    # register blueprints
-    from src.castingagency.api.routes.ping import ping_blueprint
-    from src.castingagency.api.routes.actors import actors_blueprint
-    from src.castingagency.api.routes.movies import movies_blueprint
-    from src.castingagency.api.routes.casting import casts_blueprint
-    from src.castingagency.api.routes.index import index_blueprint
-    app.register_blueprint(ping_blueprint)
-    app.register_blueprint(actors_blueprint)
-    app.register_blueprint(movies_blueprint)
-    app.register_blueprint(casts_blueprint)
-    app.register_blueprint(index_blueprint)
 
     # shell context for flask cli
     @app.shell_context_processor

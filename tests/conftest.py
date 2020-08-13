@@ -21,6 +21,7 @@ def test_database():
     db.session.remove()
     db.drop_all()
 
+
 @pytest.fixture(scope='function')
 def add_actor():
     def _add_actor(name, age, gender):
@@ -29,6 +30,7 @@ def add_actor():
         db.session.commit()
         return actor
     return _add_actor
+
 
 @pytest.fixture(scope='function')
 def add_movie():

@@ -8,7 +8,8 @@ def test_add_movie(test_app, test_database):
     client = test_app.test_client()
     resp = client.post(
         "/movies",
-        data=json.dumps({"title": "He Got Game", "release_date": "1998-04-28"}),
+        data=json.dumps(
+            {"title": "He Got Game", "release_date": "1998-04-28"}),
         content_type="application/json",
     )
     data = json.loads(resp.data.decode())
@@ -19,10 +20,12 @@ def test_add_movie(test_app, test_database):
 
 def test_add_movie_invalid_json(test_app, test_database):
     client = test_app.test_client()
-    resp = client.post("/movies", data=json.dumps({}), content_type="application/json",)
+    resp = client.post("/movies", data=json.dumps({}),
+                       content_type="application/json",)
     data = json.loads(resp.data.decode())
     assert resp.status_code == 422
     assert "unprocessable" == data["message"]
+
 
 def test_get_single_movie(test_app, test_database, add_movie):
     movie = add_movie('Love and Basketball', date(1998, 4, 28))
