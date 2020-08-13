@@ -10,6 +10,7 @@ migrate = Migrate(app, db)
 # manager = Manager(app)
 # manager.add_command('db', MigrateCommand)
 
+
 @cli.command('recreate_db')
 def recreate_db():
     db.drop_all()

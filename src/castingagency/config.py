@@ -1,5 +1,6 @@
 import os
 
+
 class BaseConfig:
     APP = 'castingagency'
     TESTING = False
@@ -23,3 +24,4 @@ class TestingConfig(BaseConfig):
 class ProductionConfig(BaseConfig):
     # ENV = 'production'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SECRET_KEY = os.getenv("SECRET_KEY", "jamaal")
