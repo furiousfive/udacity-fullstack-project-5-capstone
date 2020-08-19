@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
@@ -15,7 +15,7 @@ cors = CORS()
 def create_app(script_info=None):
 
     # instantiate the app
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='templates')
 
     # set config
     app_settings = os.getenv('APP_SETTINGS')
@@ -26,6 +26,10 @@ def create_app(script_info=None):
     ma.init_app(app)
     migrate.init_app(app, db)
     cors.init_app(app)
+
+    @app.route('/index.html')
+    def home():
+        return render_template('index.html')
 
     from src.castingagency.api import api
 

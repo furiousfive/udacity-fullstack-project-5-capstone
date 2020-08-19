@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Casting Agency</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+{#	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">#}
+{#	<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"#}
+{#	        integrity="sha256-321PxS+POvbvWcIVoRZeRmf32q7fTFQJ21bXwTNWREY=" crossorigin="anonymous"></script>#}
+</head>
+<body>
+
+{# nav #}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+	<div id="" class="navbar-menu">
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<div class="buttons">
+					<a id="loginButton" class="button is-primary" href="https://jamaalsanders.auth0.com/authorize?audience=casting-agency&response_type=token&client_id=eTgVTbCyROw5drxxTEa7nW0UauexHv3A
+&redirect_uri=http://localhost:5000/docs">
+						<strong>Log in</strong>
+					</a>
+					<a id="logoutButton" class="button is-primary" onclick="logOut()">
+						<strong>Log out</strong>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+	{# extended pages	#}
+
+{#	{% block index %}{% endblock %}#}
+	{% block login %}{% endblock %}
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

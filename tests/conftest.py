@@ -1,4 +1,7 @@
 import pytest
+import requests
+import json
+import os
 
 from src.castingagency import create_app, db
 from src.castingagency.api.models.actor import Actor
@@ -40,3 +43,22 @@ def add_movie():
         db.session.commit()
         return movie
     return _add_movie
+
+@pytest.fixture(scope='session')
+def get_access_token():
+    url = "https://jamaalsanders.auth0.com/oauth/token"
+    client_id = os.getenv('CLIENT_ID')
+    client_secret = os.getenv('CLIENT_SECRET')
+    headers = {
+        'content-type': 'application/json'
+    }
+    payload = {
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "audience": "casting-agency",
+        "grant_type": "client_credentials"
+    }
+    response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
+    print(response.status_code)
+    data = json.loads(response.text.encode("utf-8"))
+    return data

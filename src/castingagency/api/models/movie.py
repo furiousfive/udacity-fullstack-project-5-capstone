@@ -3,9 +3,9 @@ from src.castingagency import db, ma
 
 
 class Movie(db.Model):
-    """Movie model
-    a movie must have a unique title
-    a movie must also have a release_date
+    """
+    Movie model
+    A movie must have a title  and release_date
     """
 
     __tablename__ = "movies"

@@ -3,9 +3,9 @@ from src.castingagency import db, ma
 
 
 class Actor(db.Model):
-    """Actor model
-    an actor must have a name, age and gender
-    movies is a foreign key pointing to the movies the actor has been in
+    """
+    Actor model
+    An actor must have a name, age and gender
     """
 
     __tablename__ = "actors"
